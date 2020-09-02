@@ -1,4 +1,7 @@
-#include <iostream>
+// .h ou .hpp precisa das bibliotecas que são usadas dentro do arquivo. Então não precisa chamar no arquivo main
+// .h -> header file, do C
+
+// #include <iostream> (já está no arquivo principal)
 #include <stdlib.h>
 using namespace std;
 
@@ -13,6 +16,7 @@ int *alocaVetor (int tamanho) {
 
 // (2)
 int *criaVetor(int *vetor, int tamanho) {
+  srand(time(NULL)); // Semente para o calculo dos números pseudos aleatórios baseado no tempo da máquina
   // Inicializa o vetor com valores aleatórios de 0 a 100
   for(int i = 0; i < tamanho; i++) {
     vetor[i] = rand() % 100 + 1;

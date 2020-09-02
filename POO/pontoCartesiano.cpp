@@ -1,4 +1,4 @@
-// Exemplo de classe
+// Exemplo de classe (01/09/20)
 
 #include <iostream>
 using namespace std;

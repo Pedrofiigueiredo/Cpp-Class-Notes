@@ -14,7 +14,7 @@
 */
 
 #include <iostream>
-#include "vetor.hpp"
+#include "vetor.hpp" // Importar depois de todas as libs (usadas NESSE arquivo)
 using namespace std;
 
 int main () {
