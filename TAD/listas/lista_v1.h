@@ -1,3 +1,10 @@
+/*
+	-- Lista v1 --
+	Lista simples, não dinamica - com posição fixa de 100 elementos
+ 	* Adicionar elementos somente depois de todos os outros
+	* Remover elemento deixa -1 na lista (não funciona com negativos)
+*/
+
 #include <iostream>
 #include <string>
 
