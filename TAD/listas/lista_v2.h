@@ -1,8 +1,8 @@
 /*
 	-- Lista v2 --
-	# Inserir em qualquer posição
+	Inserir em qualquer posição
 
-	* Continua estática
+	* Continua com alocação estática (tamanho fixo)
 */
 
 #include<iostream>
@@ -11,8 +11,8 @@ using namespace std;
 class Lista{
 	private:
 		int minhaLista[100];
-		int tamanhoLista=0;
-		int tamanhoMaximo=100;
+		int tamanhoLista=0; // Número de elementos na lista
+		int tamanhoMaximo=100; // Máximo de elementos possíveis
 
 		// Assinatura do metodo - tipo de retorno, nome do metodo e parametros com seus tipos
 		void abreEspacoLista(int posicao);
@@ -22,6 +22,7 @@ class Lista{
 		Lista(){ // Construtor da classe
 		}
 
+		// * Sobrecarga de métodos (mesmo nome, mas assinaturas diferentes)
 		void inserir(int elemento); // Inserir na ultima posicao da lista
 		void inserir(int elemento, int posicao); // Inserir na posicao desejada
 		void remover(int posicao);
@@ -32,7 +33,7 @@ class Lista{
 };
 
 //
-void Lista::abreEspacoLista(int posicao) {
+void Lista::abreEspacoLista(int posicao) { // "Esse método é da classe lista"
 	for(int i = tamanhoLista; i >= posicao; i--)
 		minhaLista[i] = minhaLista[i-1];
 }
@@ -43,6 +44,7 @@ void Lista::fechaEspacoLista(int posicao) {
 		minhaLista[i]=minhaLista[i+1];
 }
 
+// Sempre no final
 void Lista::inserir(int elemento) {
 	if(tamanhoLista<tamanhoMaximo){
 		minhaLista[tamanhoLista]=elemento;
@@ -50,18 +52,18 @@ void Lista::inserir(int elemento) {
 	}
 }
 
-// Inserir um novo elemento na lista se houver espaco
+// Inserir por posição
 void Lista::inserir(int elemento, int posicao){
 	if((tamanhoLista < tamanhoMaximo) && (posicao <= tamanhoLista)){
-		abreEspacoLista(posicao);
+		abreEspacoLista(posicao); // Copia todos os elementos uma posição para frente
 		minhaLista[posicao] = elemento;
 		tamanhoLista++;
 	}
 }
 
-void Lista::remover(int posicao){//assumindo que nao existem valores negativos na lista
+void Lista::remover(int posicao){ // Assumindo que nao existem valores negativos na lista
 	if(posicao<tamanhoLista){
-		fechaEspacoLista(posicao);
+		fechaEspacoLista(posicao); // Copia todos os elementos uma posição para trás
 		tamanhoLista--;
 	}
 	else{
@@ -69,7 +71,7 @@ void Lista::remover(int posicao){//assumindo que nao existem valores negativos n
 	}
 }
 
-int Lista::buscar(int elemento){//buscar um elemento na lista e retorna a posicao da lista em que o elemento esta
+int Lista::buscar(int elemento){ // Buscar um elemento na lista e retorna a posicao da lista em que o elemento esta
 	for(int i=0; i<tamanhoLista; i++){
 		if(minhaLista[i]==elemento){
 			return i;
@@ -94,3 +96,9 @@ int Lista::mostraElemento(int posicao){
 		cout<<"Posicao nao existe na lista"<<endl;
 	}
 }
+
+/*
+	Implementação dos métodos fora da classe
+	para facilitar a orgaqnização do código
+	(mais fácil de ver o que é a classe)
+*/

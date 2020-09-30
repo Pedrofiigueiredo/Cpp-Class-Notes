@@ -1,10 +1,15 @@
+/*
+	-- Lista v3 --
+	Alocação dinâmica da lista, com tamanho pré-definido pelo usuário
+*/
+
 #include<iostream>
 
 using namespace std;
 
 class Lista{
 	private:
-	int *minhaLista;
+	int *minhaLista; // Ponteiro que aponta para o endereço de memória que guarda uma lista de N posições
 	int tamanhoLista=0;
 	int tamanhoMaximo;
 
@@ -21,10 +26,37 @@ class Lista{
 	}
 
 	public:
-	Lista(int tamanho){//construtor da classe
-		minhaLista=new int[tamanho];
-		tamanhoMaximo=tamanho;
+	Lista(int tamanho){ // Construtor da classe faz a alocação dinâmica da lista
+		minhaLista = new int[tamanho];
+		/*
+			Reserva um espaço para "tamanho" inteiros e retorna o
+			endereço desse espaço de memória para o ponteiro minha lista.
+			Minha lista não valor ainda.
+		*/
+		tamanhoMaximo = tamanho;
+
+		/*
+			Agora o construtor está esperando um parâmetro, então
+			no arquivo main eu preciso criar a instância da classe
+			passando esse parâmetro, que é o tamanho da minha lista.
+
+			Lista minhaLista(20);
+		*/
 	}
+
+	/*
+		Outro jeito de fazer isso é criar outro método e deixar o construtor vazio.
+		Isso faz com que a declaração da instância continue a mesma e o tamanho da
+		lista é recebido durante a execução.
+
+		void criaLista (int tamanho) {
+			tamanhoMaximo = tamanho
+			minhaLista = new int[tamanho]
+		}
+	}
+	*/
+
+	// Todos os demais métodos são EXATAMENTE iguais
 
 	void inserir(int elemento, int posicao){ //inserir um novo elemento na lista se houver espaco
 		if((tamanhoLista<tamanhoMaximo)&&(posicao<=tamanhoLista)){
@@ -60,5 +92,4 @@ class Lista{
 			cout<<minhaLista[i]<<endl;
 		}
 	}
-
 };

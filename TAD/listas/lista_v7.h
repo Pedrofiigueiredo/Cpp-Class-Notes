@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-// * Só serve para implementação em vetor, porque as operações de inserir e remover (operações de encadeamento) são válidas para lidar com ponteiros etc.
+// * Template só serve para implementação em vetor, porque as operações de inserir e remover (operações de encadeamento) são válidas para lidar com ponteiros etc.
 
 template <class T> class Lista {
   private:
